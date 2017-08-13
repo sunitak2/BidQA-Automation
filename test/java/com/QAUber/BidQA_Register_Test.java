@@ -22,6 +22,7 @@ public class BidQA_Register_Test {
 
 
 
+
         System.out.println("All navigation links clicked. Test passed!");
     }
     }

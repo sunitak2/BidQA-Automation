@@ -13,7 +13,8 @@ public class BidQA_HomePage {
     }
 
     public WebElement BidQAHome(){
-        return driver.findElement(By.xpath("//*[@id=\"cssmenu\"]/ul/li[1]/a"));}
+        return driver.findElement(By.xpath("//*[@id=\"cssmenu\"]/ul/li[1]/a"));
+    }
 
     public WebElement BidQAAboutUs(){
         return driver.findElement(By.xpath("//*[@id=\"cssmenu\"]/ul/li[2]/a"));
@@ -34,6 +35,7 @@ public class BidQA_HomePage {
     public WebElement BidQA_Support(){
         return driver.findElement(By.xpath("//*[@id=\"cssmenu\"]/ul/li[6]/a"));
     }
+
     public WebElement BidQA_Register(){
         return driver.findElement(By.xpath("//*[@id=\"cssmenu\"]/ul/li[7]/a"));
     }
@@ -41,6 +43,7 @@ public class BidQA_HomePage {
     public WebElement BidQA_Login(){
         return driver.findElement(By.xpath("//*[@id=\"cssmenu\"]/ul/li[8]/a"));
     }
+
     public WebElement BidQA_Logo(){
         return driver.findElement(By.xpath("//*[@id=\"logo\"]"));
     }
