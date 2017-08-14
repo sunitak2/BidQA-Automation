@@ -29,6 +29,7 @@ public class BidQA_Login_Test {
         page.getBidQAHome().BidQA_Login().click();
         Thread.sleep(3000);
 
+
         //Enter login credentials
         page.getBidQALogin().BidQA_Login_UserName().clear();
         page.getBidQALogin().BidQA_Login_UserName().sendKeys(dataLoginPage.strUserName);
@@ -62,6 +63,21 @@ public class BidQA_Login_Test {
             driver.close();
             driver.quit();
 
+
+
+        //Clear user name text box
+        driver.findElement(By.xpath("//*[@id=\"log\"]")).clear();
+        //Enter user name in the text box
+        driver.findElement(By.xpath("//*[@id=\"log\"]")).sendKeys("login");
+        //Clear password text box.
+        driver.findElement(By.xpath("//*[@id=\"login_password\"]")).clear();
+        //Enter password in the password text box
+        driver.findElement(By.xpath("//*[@id=\"login_password\"]")).sendKeys("password");
+        //Click submit button
+        driver.findElement(By.xpath("//*[@id=\"submits\"]")).click();
+        //Verify welcome message after loggin into the account
+        Assert.assertEquals("Welcome Sunita",driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div[4]")).getText());
+        System.out.println("Found 'Login Successfully' ");
 
 
 
