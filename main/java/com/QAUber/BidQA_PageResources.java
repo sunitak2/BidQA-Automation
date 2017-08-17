@@ -31,6 +31,7 @@ public class BidQA_PageResources {
     }
 
     public BidQa_PostNewProject getBidQAPostNew() {
+
         return bidQAPostNew;
     }
 

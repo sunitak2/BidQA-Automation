@@ -13,10 +13,11 @@ public class BidQA_Home_Test {
     public void test1() throws Exception {
         WebDriver driver = new ChromeDriver();
         BidQA_PageResources page = new BidQA_PageResources(driver);
+        QA_Data data = new QA_Data();
 
         // Load test BidQA site
 
-        driver.get("http://test.bidqa.com/");
+        driver.get(data.strWebSiteName);
         Thread.sleep(3000);
         System.out.println("Loading site");
 
@@ -29,6 +30,7 @@ public class BidQA_Home_Test {
         //About Us link
         page.getBidQAHome().BidQAAboutUs().click();
         Thread.sleep(3000);
+
         //Verify that title is About us
         Assert.assertEquals("About Us",driver.findElement(By.xpath("//*[@id='wrapper']/div[2]/div/div[1]/div[1]")).getText());
         System.out.println("Found 'About Us'");

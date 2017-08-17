@@ -24,11 +24,11 @@ public class BidQA_PostNew_HideProject {
         driver.manage().window().maximize();
 
         BidQA_PageResources page = new BidQA_PageResources(driver);
-        BidQA_DataLoginPage dataLoginPage = new BidQA_DataLoginPage();
+        QA_Data data = new QA_Data();
 
         // Load test BidQA site
 
-        driver.get("http://test.bidqa.com/");
+        driver.get(data.strWebSiteName);
         Thread.sleep(3000);
         System.out.println("Loading site");
 
@@ -37,47 +37,47 @@ public class BidQA_PostNew_HideProject {
         Thread.sleep(3000);
 
         page.getBidQALogin().BidQA_Login_UserName().clear();
-        page.getBidQALogin().BidQA_Login_UserName().sendKeys(dataLoginPage.strUserName);
+        page.getBidQALogin().BidQA_Login_UserName().sendKeys(data.strUserName);
         page.getBidQALogin().BidQA_Login_Password().clear();
-        page.getBidQALogin().BidQA_Login_Password().sendKeys(dataLoginPage.strPassWord);
+        page.getBidQALogin().BidQA_Login_Password().sendKeys(data.strPassWord);
         page.getBidQALogin().BidQA_Login_SignUp().click();
 
         // Verify thta Welcome message shows
-        Assert.assertEquals(dataLoginPage.strWelcomeMessage.toUpperCase(), page.getBidQALogin().BidQA_Login_WelcomeMessage().getText().toUpperCase());
+        Assert.assertEquals(data.strWelcomeMessage.toUpperCase(), page.getBidQALogin().BidQA_Login_WelcomeMessage().getText().toUpperCase());
 
         page.getBidQAPostNew().BidQAPostNew_Link().click();
         page.getBidQAPostNew().BidQA_PostNew_Title().clear();
-        page.getBidQAPostNew().BidQA_PostNew_Title().sendKeys(dataLoginPage.strTitlePostNew);
+        page.getBidQAPostNew().BidQA_PostNew_Title().sendKeys(data.strTitlePostNew);
         page.getBidQAPostNew().BidQA_PostNew_Desc().clear();
-        page.getBidQAPostNew().BidQA_PostNew_Desc().sendKeys(dataLoginPage.strDescriptionPostNew);
+        page.getBidQAPostNew().BidQA_PostNew_Desc().sendKeys(data.strDescriptionPostNew);
         page.getBidQAPostNew().BidQA_PostNew_Categories().click();
         page.getBidQAPostNew().BidQA_PostNew_Skills().click();
         page.getBidQAPostNew().BidQa_PostNew_ProjectEnding().click();
         page.getBidQAPostNew().BidQa_PostNew_DatePicker().click();
 
         Select drpCountry = new Select(page.getBidQAPostNew().BidQA_PostNew_Country());
-        drpCountry.selectByVisibleText(dataLoginPage.strCountry);
+        drpCountry.selectByVisibleText(data.strCountry);
 
         Thread.sleep(3000);
 
         Select drpStates = new Select(page.getBidQAPostNew().BidQA_PostNew_States());
-        drpStates.selectByVisibleText(dataLoginPage.strState);
+        drpStates.selectByVisibleText(data.strState);
 
         Thread.sleep(3000);
 
         page.getBidQAPostNew().BidQA_PostNew_City().clear();
-        page.getBidQAPostNew().BidQA_PostNew_City().sendKeys(dataLoginPage.strCity);
+        page.getBidQAPostNew().BidQA_PostNew_City().sendKeys(data.strCity);
 
 
 
         page.getBidQAPostNew().BidQA_PostNew_Address().clear();
-        page.getBidQAPostNew().BidQA_PostNew_Address().sendKeys(dataLoginPage.strAddress);
-      //  page.getBidQAPostNew().BidQA_PostNew_Address().sendKeys(dataLoginPage.strAddress);
+        page.getBidQAPostNew().BidQA_PostNew_Address().sendKeys(data.strAddress);
+
 
         page.getBidQAPostNew().BidQA_PostNew_NextStep().click();
 
 
-        Assert.assertEquals(page.getBidQAPostNew().BidQA_PostNew_PageTitle().getText().trim(),dataLoginPage.strPostNewTitle );
+        Assert.assertEquals(page.getBidQAPostNew().BidQA_PostNew_PageTitle().getText().trim(),data.strPostNewTitle );
 
 
         // Second page for Post New Project
@@ -91,9 +91,9 @@ public class BidQA_PostNew_HideProject {
         strPayHideProject =  page.getBidQAPostNew().BidQA_PostNew_PayForHideProject().getText().trim();
 
 
-        Assert.assertEquals(dataLoginPage.strHideProjectMsg,strHideProject);
+        Assert.assertEquals(data.strHideProjectMsg,strHideProject);
 
-        Assert.assertEquals(dataLoginPage.strProjectAmt,strPayHideProject);
+        Assert.assertEquals(data.strProjectAmt,strPayHideProject);
 
 
         // Close the Browser

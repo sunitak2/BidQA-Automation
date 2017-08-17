@@ -15,11 +15,11 @@ public class BidQA_PostNew_ContactUs_Link {
     public void test1() throws Exception {
         WebDriver driver = new ChromeDriver();
         BidQA_PageResources page = new BidQA_PageResources(driver);
-        BidQA_DataLoginPage dataLoginPage = new BidQA_DataLoginPage();
+        QA_Data data = new QA_Data();
 
         // Load test BidQA site
 
-        driver.get("http://test.bidqa.com/");
+        driver.get(data.strWebSiteName);
         Thread.sleep(3000);
         System.out.println("Loading site");
 
@@ -30,14 +30,14 @@ public class BidQA_PostNew_ContactUs_Link {
 
         //Enter login credentials
         page.getBidQALogin().BidQA_Login_UserName().clear();
-        page.getBidQALogin().BidQA_Login_UserName().sendKeys(dataLoginPage.strUserName);
+        page.getBidQALogin().BidQA_Login_UserName().sendKeys(data.strUserName);
         page.getBidQALogin().BidQA_Login_Password().clear();
-        page.getBidQALogin().BidQA_Login_Password().sendKeys(dataLoginPage.strPassWord);
+        page.getBidQALogin().BidQA_Login_Password().sendKeys(data.strPassWord);
         page.getBidQALogin().BidQA_Login_SignUp().click();
 
         strActualResult = page.getBidQALogin().BidQA_Login_WelcomeMessage().getText().toUpperCase();
 
-        Assert.assertEquals(dataLoginPage.strWelcomeMessage.toUpperCase(),strActualResult );
+        Assert.assertEquals(data.strWelcomeMessage.toUpperCase(),strActualResult );
 
         //Click on Post new project
         page.getBidQAPostNew().BidQAPostNew_Link().click();
@@ -58,8 +58,6 @@ public class BidQA_PostNew_ContactUs_Link {
 
 
         page.getBidQALogin().BidQA_Logout().click();
-
-
 
 
 

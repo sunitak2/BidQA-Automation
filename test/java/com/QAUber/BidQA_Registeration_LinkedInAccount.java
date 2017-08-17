@@ -13,11 +13,11 @@ public class BidQA_Registeration_LinkedInAccount {
 
         WebDriver driver = new ChromeDriver();
         BidQA_PageResources page = new BidQA_PageResources(driver);
-        BidQA_DataLoginPage dataLoginPage = new BidQA_DataLoginPage();
+        QA_Data data = new QA_Data();
 
         // Load test BidQA site
 
-        driver.get("http://test.bidqa.com/");
+        driver.get(data.strWebSiteName);
         Thread.sleep(3000);
         System.out.println("Loading site");
 
@@ -25,7 +25,7 @@ public class BidQA_Registeration_LinkedInAccount {
         page.getBidQAHome().BidQA_Register().click();
         Thread.sleep(3000);
 
-        Assert.assertEquals(dataLoginPage.strRegTitle,page.getBidQARegisteration().BidQA_Registeration_Title().getText().trim());
+        Assert.assertEquals(data.strRegTitle,page.getBidQARegisteration().BidQA_Registeration_Title().getText().trim());
         System.out.println("Found 'Register' ");
 
         // Click on 'Sign Up with LinkedIn'

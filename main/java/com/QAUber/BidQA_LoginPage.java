@@ -33,7 +33,8 @@ public class BidQA_LoginPage {
     }
 
     public WebElement BidQA_Logout(){
-        return driver.findElement(By.xpath("//*[@id=\"cssmenu\"]/ul/li[7]/a"));
+
+        return driver.findElement(By.xpath("//*[@id=\"cssmenu\"]/ul/li[8]/a"));
     }
 
 

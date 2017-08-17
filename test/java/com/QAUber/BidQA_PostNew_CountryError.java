@@ -1,12 +1,16 @@
 package com.QAUber;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class BidQA_PostNew_TitleError {
+import java.util.List;
+
+public class BidQA_PostNew_CountryError {
 
     @Test
     public void test1() throws Exception {
@@ -14,12 +18,13 @@ public class BidQA_PostNew_TitleError {
 
         //Maximize the window
         driver.manage().window().maximize();
+
         BidQA_PageResources page = new BidQA_PageResources(driver);
         QA_Data data = new QA_Data();
 
         // Load test BidQA site
 
-        driver.get(data.strWebSiteName);
+        driver.get("http://test.bidqa.com/");
         Thread.sleep(3000);
         System.out.println("Loading site");
 
@@ -41,38 +46,44 @@ public class BidQA_PostNew_TitleError {
         page.getBidQAPostNew().BidQA_PostNew_Title().sendKeys(data.strTitlePostNew);
         page.getBidQAPostNew().BidQA_PostNew_Desc().clear();
         page.getBidQAPostNew().BidQA_PostNew_Desc().sendKeys(data.strDescriptionPostNew);
-        page.getBidQAPostNew().BidQA_PostNew_Categories().click();
-        page.getBidQAPostNew().BidQA_PostNew_Skills().click();
+
+        List<WebElement> eCategories= driver.findElements(By.name("project_cat_cat_multi[]"));
+
+        if (data.iCategoryIndex >= 0 ) {
+
+
+            eCategories.get(data.iCategoryIndex).click();
+
+
+        }
+
+        List<WebElement> eSkills= driver.findElements(By.name("project_skill_cat_multi[]"));
+
+        if (data.iSkillsIndex >= 0 ) {
+
+
+            eSkills.get(data.iSkillsIndex).click();
+
+
+        }
+
         page.getBidQAPostNew().BidQa_PostNew_ProjectEnding().click();
         page.getBidQAPostNew().BidQa_PostNew_DatePicker().click();
 
-        Select drpCountry = new Select(page.getBidQAPostNew().BidQA_PostNew_Country());
-        drpCountry.selectByVisibleText(data.strCountry);
-
         Thread.sleep(3000);
-
-        Select drpStates = new Select(page.getBidQAPostNew().BidQA_PostNew_States());
-        drpStates.selectByVisibleText(data.strState);
-
-        Thread.sleep(3000);
-
-        page.getBidQAPostNew().BidQA_PostNew_City().clear();
-        page.getBidQAPostNew().BidQA_PostNew_City().sendKeys(data.strCity);
-
-
-
         page.getBidQAPostNew().BidQA_PostNew_Address().clear();
         page.getBidQAPostNew().BidQA_PostNew_Address().sendKeys(data.strAddress);
 
         page.getBidQAPostNew().BidQA_PostNew_NextStep().click();
 
-        Assert.assertEquals(page.getBidQAPostNew().BidQA_Error_Title().getText(),data.strErrorTitle);
-        System.out.println(page.getBidQAPostNew().BidQA_Error_Title().getText());
+        Assert.assertEquals(page.getBidQAPostNew().BidQA_Error_Country().getText(),data.strErrorCountry);
+        System.out.println(page.getBidQAPostNew().BidQA_Error_Country().getText());
         System.out.println("Test Passed");
 
         page.getBidQALogin().BidQA_Logout().click();
         driver.close();
         driver.quit();
+
     }
 
 }

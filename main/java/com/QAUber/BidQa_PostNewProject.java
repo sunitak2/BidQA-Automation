@@ -30,9 +30,12 @@ public class BidQa_PostNewProject {
 
     public WebElement BidQA_PostNew_Categories(){
 
-       // ((JavascriptExecutor) driver).executeScript(("arguments[0].scrollIntoView();"), driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[2]/form/ul/li[6]/div/label[3]/input")));
-        return driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[2]/form/ul/li[6]/div/label[3]/input"));
+
+       //return driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[2]/form/ul/li[6]/div/label[3]/input"));
+       // return driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[2]/form/ul/li[6]/div"));
+       return driver.findElement(By.name("project_cat_cat_multi[]"));
     }
+
 
     public WebElement BidQA_PostNew_Tags(){
         ((JavascriptExecutor) driver).executeScript(("arguments[0].scrollIntoView();"), driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[2]/form/ul/li[7]/p/input")));
@@ -58,7 +61,7 @@ public class BidQa_PostNewProject {
 
     public WebElement BidQa_PostNew_DatePicker(){
 
-        return driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[3]/td[4]/a"));
+        return driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[5]/td[5]/a"));
     }
 
     public WebElement BidQA_PostNew_Country(){
@@ -192,6 +195,12 @@ public class BidQa_PostNewProject {
 
         return driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[3]/form/ul/li[9]/p"));
     }
+
+    public WebElement BidQA_Error_ProjectEnding(){
+
+        return driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[3]/form/ul/li[12]/p[1]"));
+    }
+
     public WebElement BidQA_Error_Country(){
 
         return driver.findElement(By.xpath("//*[@id=\"li-location\"]/p"));
